@@ -19,7 +19,6 @@ export default async function Page({
   const currentPage = Number(searchParams?.page) || 1;
 
   const totalPages = await fetchCategoriesPages(query);
-  const session = await auth();
 
   return (
     <main className="w-full py-4">

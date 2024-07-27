@@ -8,11 +8,14 @@ export const authConfig = {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
       const isOnDashboard = nextUrl.pathname.startsWith("/dashboard");
+      const isOnProfile = nextUrl.pathname.startsWith("/profile");
       const isImage = nextUrl.pathname.endsWith(".jpg");
 
       if (isImage) return true;
 
       if (!isLoggedIn) return false;
+
+      if (isOnProfile) return true;
 
       if (!isOnDashboard)
         return Response.redirect(new URL("/dashboard", nextUrl));
