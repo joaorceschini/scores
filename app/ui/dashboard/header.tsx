@@ -1,24 +1,49 @@
 import Image from "next/image";
+import { signOut } from "../../../auth";
+import { ArrowRightStartOnRectangleIcon } from "@heroicons/react/24/outline";
+import { fetchUserSimpleDataByEmail } from "@/app/lib/data";
+import { auth } from "@/auth";
+import clsx from "clsx";
 
-export default function dashboardHeader() {
+export default async function dashboardHeader() {
+  const session = await auth();
+  const user = await fetchUserSimpleDataByEmail(session?.user?.email || "a");
+
   return (
     <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
       <div className="flex items-center gap-2">
         <a
-          className="fixed left-0 top-0 flex w-full items-center justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-0 lg:pr-4 gap-4 lg:dark:bg-zinc-800/30"
+          className="fixed left-0 top-0 flex w-full items-center justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-md lg:border lg:bg-gray-200 lg:p-0 lg:pr-4 lg:gap-4 lg:dark:bg-zinc-800/30"
           href="/profile"
         >
-          <div className="hidden lg:block relative w-[50px] h-[50px]">
-            <Image
-              src="/tylerdurden.jpg"
-              alt="avatar"
-              className="rounded-l-xl"
-              layout={"fill"}
-              objectFit={"cover"}
-            />
+          <div
+            className={clsx("hidden lg:block relative w-[50px] h-[50px]", {
+              "bg-zinc-900 rounded-l-md": user.image_url === null,
+            })}
+          >
+            {user.image_url && (
+              <Image
+                src={user.image_url}
+                alt="avatar"
+                className="rounded-l-md"
+                layout={"fill"}
+                objectFit={"cover"}
+              />
+            )}
           </div>
-          <p>jces</p>
+          {user.username}
         </a>
+        <form
+          action={async () => {
+            "use server";
+            await signOut();
+          }}
+        >
+          <button className="flex h-[48px] grow items-center justify-center p-3 transition-colors text-gray-400 hover:text-white md:flex-none md:justify-start md:p-2 md:px-3">
+            <ArrowRightStartOnRectangleIcon className="hidden w-6 lg:block" />
+            <div className="lg:hidden">sign out</div>
+          </button>
+        </form>
       </div>
       <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
         <a
@@ -29,8 +54,8 @@ export default function dashboardHeader() {
             src="/scores-logo-cyber.jpg"
             alt="scores logo"
             className="dark:invert "
-            width={54}
-            height={54}
+            width={52}
+            height={52}
             priority
           />
         </a>
