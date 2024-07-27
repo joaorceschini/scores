@@ -57,17 +57,10 @@ export default async function dashboardHeader() {
             width={52}
             height={52}
             priority
+            unoptimized
           />
         </a>
       </div>
-      <Image
-        src="/scores-logo-cyber-2.jpg"
-        alt="scores logo"
-        className="dark:invert "
-        width={52}
-        height={52}
-        priority
-      />
     </div>
   );
 }
