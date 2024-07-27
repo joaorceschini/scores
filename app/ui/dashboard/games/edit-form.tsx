@@ -4,7 +4,7 @@ import Link from "next/link";
 import { PlusIcon, LinkIcon } from "@heroicons/react/24/outline";
 import { useActionState } from "react";
 import { Button } from "../../button";
-import { State, updateGame } from "../../../lib/actions";
+import { StateGame, updateGame } from "../../../lib/actions";
 import { QueryResultRow } from "@vercel/postgres";
 
 export default function Form({
@@ -14,7 +14,7 @@ export default function Form({
   game: QueryResultRow;
   categoryId: string;
 }) {
-  const initialState: State = { message: null, errors: {} };
+  const initialState: StateGame = { message: null, errors: {} };
   const updateGameWithId = updateGame.bind(null, game.id, categoryId);
   const [state, formAction] = useActionState(updateGameWithId, initialState);
 

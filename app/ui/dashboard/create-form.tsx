@@ -4,10 +4,10 @@ import Link from "next/link";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { useActionState } from "react";
 import { Button } from "../button";
-import { createCategory, State } from "../../lib/actions";
+import { createCategory, StateCategory } from "../../lib/actions";
 
 export default function Form() {
-  const initialState: State = { message: null, errors: {} };
+  const initialState: StateCategory = { message: null, errors: {} };
 
   const [state, formAction] = useActionState(createCategory, initialState);
 

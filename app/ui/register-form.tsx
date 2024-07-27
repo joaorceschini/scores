@@ -8,11 +8,11 @@ import {
 import { ArrowRightIcon, UserCircleIcon } from "@heroicons/react/20/solid";
 import { Button } from "./button";
 import { useActionState } from "react";
-import { createUser, State } from "@/app/lib/actions";
+import { createUser, StateUser } from "@/app/lib/actions";
 import Link from "next/link";
 
 export default function RegisterForm() {
-  const initialState: State = { message: null, errors: {} };
+  const initialState: StateUser = { message: null, errors: {} };
   const [state, formAction, isPending] = useActionState(
     createUser,
     initialState,

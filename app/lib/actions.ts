@@ -22,14 +22,49 @@ import bcrypt from "bcrypt";
 import { auth } from "@/auth";
 import { signOut } from "../../auth";
 
-const user_id = "410544b2-4001-4271-9855-fec4b6a6442a";
+export type StateCategory = {
+  errors?: {
+    name?: string[];
+  };
+  message?: string | null;
+};
 
-export type State = {
+export type StateGame = {
   errors?: {
     name?: string[];
     url?: string[];
+  };
+  message?: string | null;
+};
+
+export type StateScore = {
+  errors?: {
+    score?: string[];
+    description?: string[];
+  };
+  message?: string | null;
+};
+
+export type StateUser = {
+  errors?: {
     username?: string[];
     email?: string[];
+    password?: string[];
+  };
+  message?: string | null;
+};
+
+export type StateUserUpdate = {
+  errors?: {
+    username?: string[];
+    email?: string[];
+    image_url?: string[];
+  };
+  message?: string | null;
+};
+
+export type StateUserUpdatePassword = {
+  errors?: {
     password?: string[];
   };
   message?: string | null;
@@ -50,7 +85,10 @@ const CreateCategory = FormSchema.omit({
   date: true,
 });
 
-export async function createCategory(prevState: State, formData: FormData) {
+export async function createCategory(
+  prevState: StateCategory,
+  formData: FormData,
+) {
   const validatedFields = CreateCategory.safeParse({
     name: formData.get("name"),
   });
@@ -95,7 +133,7 @@ const UpdateCategory = FormSchema.omit({ id: true, date: true });
 
 export async function updateCategory(
   id: string,
-  prevState: State,
+  prevState: StateCategory,
   formData: FormData,
 ) {
   const validatedFields = UpdateCategory.safeParse({
@@ -168,7 +206,7 @@ const CreateGame = GameFormSchema.omit({
 
 export async function createGame(
   categoryId: string,
-  prevState: State,
+  prevState: StateGame,
   formData: FormData,
 ) {
   const validatedFields = CreateGame.safeParse({
@@ -217,7 +255,7 @@ const UpdateGame = GameFormSchema.omit({ id: true, date: true });
 export async function updateGame(
   id: string,
   categoryId: string,
-  prevState: State,
+  prevState: StateGame,
   formData: FormData,
 ) {
   const validatedFields = UpdateGame.safeParse({
@@ -294,7 +332,7 @@ const CreateScore = ScoreFormSchema.omit({
 export async function createScore(
   categoryId: string,
   gameId: string,
-  prevState: State,
+  prevState: StateScore,
   formData: FormData,
 ) {
   const validatedFields = CreateScore.safeParse({
@@ -359,7 +397,7 @@ export async function updateScore(
   id: string,
   categoryId: string,
   gameId: string,
-  prevState: State,
+  prevState: StateScore,
   formData: FormData,
 ) {
   const validatedFields = UpdateScore.safeParse({
@@ -496,7 +534,7 @@ const CreateUser = UserFormSchema.omit({
   image_url: true,
 });
 
-export async function createUser(prevState: State, formData: FormData) {
+export async function createUser(prevState: StateUser, formData: FormData) {
   const validatedFields = CreateUser.safeParse({
     username: formData.get("username"),
     email: formData.get("email"),
@@ -553,7 +591,7 @@ const UpdateUser = UserFormSchema.omit({
 
 export async function updateUser(
   id: string,
-  prevState: State,
+  prevState: StateUserUpdate,
   formData: FormData,
 ) {
   const validatedFields = UpdateUser.safeParse({
@@ -623,7 +661,7 @@ const UpdateUserNewPassword = UserNewPasswordFormSchema.omit({
 
 export async function updateUserNewPassword(
   id: string,
-  prevState: State,
+  prevState: StateUserUpdatePassword,
   formData: FormData,
 ) {
   const validatedFields = UpdateUserNewPassword.safeParse({

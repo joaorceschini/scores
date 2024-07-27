@@ -4,11 +4,14 @@ import Link from "next/link";
 import { PlusIcon, LinkIcon } from "@heroicons/react/24/outline";
 import { useActionState } from "react";
 import { Button } from "../button";
-import { State, updateUserNewPassword } from "../../lib/actions";
+import {
+  StateUserUpdatePassword,
+  updateUserNewPassword,
+} from "../../lib/actions";
 import { QueryResultRow } from "@vercel/postgres";
 
 export default function Form({ user }: { user: QueryResultRow }) {
-  const initialState: State = { message: null, errors: {} };
+  const initialState: StateUserUpdatePassword = { message: null, errors: {} };
   const updateUserNewPasswordWithId = updateUserNewPassword.bind(null, user.id);
   const [state, formAction] = useActionState(
     updateUserNewPasswordWithId,

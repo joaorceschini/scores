@@ -4,10 +4,10 @@ import Link from "next/link";
 import { PlusIcon, LinkIcon } from "@heroicons/react/24/outline";
 import { useActionState } from "react";
 import { Button } from "../../button";
-import { createGame, State } from "../../../lib/actions";
+import { createGame, StateGame } from "../../../lib/actions";
 
 export default function Form({ categoryId }: { categoryId: string }) {
-  const initialState: State = { message: null, errors: {} };
+  const initialState: StateGame = { message: null, errors: {} };
   const createGameWithId = createGame.bind(null, categoryId);
   const [state, formAction] = useActionState(createGameWithId, initialState);
 

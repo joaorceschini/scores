@@ -4,12 +4,11 @@ import Link from "next/link";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { useActionState } from "react";
 import { Button } from "../button";
-import { State, updateCategory } from "../../lib/actions";
-import { Category } from "../../lib/definitions";
+import { StateCategory, updateCategory } from "../../lib/actions";
 import { QueryResultRow } from "@vercel/postgres";
 
 export default function Form({ category }: { category: QueryResultRow }) {
-  const initialState: State = { message: null, errors: {} };
+  const initialState: StateCategory = { message: null, errors: {} };
   const updateCategoryWithId = updateCategory.bind(null, category.id);
   const [state, formAction] = useActionState(
     updateCategoryWithId,

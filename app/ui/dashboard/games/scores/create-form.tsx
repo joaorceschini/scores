@@ -4,7 +4,7 @@ import Link from "next/link";
 import { PlusIcon, ChatBubbleLeftIcon } from "@heroicons/react/24/outline";
 import { useActionState } from "react";
 import { Button } from "../../../button";
-import { createScore, State } from "../../../../lib/actions";
+import { createScore, StateScore } from "../../../../lib/actions";
 
 export default function Form({
   categoryId,
@@ -13,7 +13,7 @@ export default function Form({
   categoryId: string;
   gameId: string;
 }) {
-  const initialState: State = { message: null, errors: {} };
+  const initialState: StateScore = { message: null, errors: {} };
   const createScoreWithId = createScore.bind(null, categoryId, gameId);
   const [state, formAction] = useActionState(createScoreWithId, initialState);
 
