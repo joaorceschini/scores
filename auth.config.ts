@@ -9,11 +9,16 @@ export const authConfig = {
       const isLoggedIn = !!auth?.user;
       const isOnDashboard = nextUrl.pathname.startsWith("/dashboard");
       const isOnProfile = nextUrl.pathname.startsWith("/profile");
+      const isImage = nextUrl.pathname.endsWith(".jpg");
       if (isOnDashboard) {
         if (isLoggedIn) return true;
         return false; // Redirect unauthenticated users to login page
       }
       if (isOnProfile) {
+        if (isLoggedIn) return true;
+        return false;
+      }
+      if (isImage) {
         if (isLoggedIn) return true;
         return false;
       } else if (isLoggedIn) {

@@ -20,13 +20,6 @@ export default function LoginPage() {
             />
           </a>
         </div>{" "}
-        <Image
-          src="https://github.com/joaorceschini.png"
-          alt="scores logo"
-          width={52}
-          height={52}
-          priority
-        />
         <LoginForm />
       </div>
     </main>
