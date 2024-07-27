@@ -36,13 +36,6 @@ export default async function Page({
       <div className="mt-5 flex w-full justify-center">
         <Pagination totalPages={totalPages} />
       </div>
-      <Image
-        src="/scores-logo-cyber.jpg"
-        alt="scores logo"
-        className="dark:invert"
-        width={52}
-        height={52}
-      />
     </main>
   );
 }
