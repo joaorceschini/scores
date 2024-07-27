@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import Table from "../ui/dashboard/table";
 import Pagination from "../ui/dashboard/pagination";
 import { auth } from "@/auth";
+import Image from "next/image";
 
 export default async function Page({
   searchParams,
@@ -35,6 +36,13 @@ export default async function Page({
       <div className="mt-5 flex w-full justify-center">
         <Pagination totalPages={totalPages} />
       </div>
+      <Image
+        src="/scores-logo-cyber.jpg"
+        alt="scores logo"
+        className="dark:invert"
+        width={52}
+        height={52}
+      />
     </main>
   );
 }
