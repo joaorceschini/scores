@@ -56,7 +56,6 @@ export default async function dashboardHeader() {
             className="dark:invert "
             width={52}
             height={52}
-            priority
             unoptimized
           />
         </a>
