@@ -14,11 +14,11 @@ export const authConfig = {
         if (isLoggedIn) return true;
         return false; // Redirect unauthenticated users to login page
       }
-      if (isOnProfile) {
+      if (isImage) {
         if (isLoggedIn) return true;
         return false;
       }
-      if (isImage) {
+      if (isOnProfile) {
         if (isLoggedIn) return true;
         return false;
       } else if (isLoggedIn) {
