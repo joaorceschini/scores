@@ -13,13 +13,15 @@ export const authConfig = {
 
       if (isImage) return true;
 
-      if (!isLoggedIn) return false;
-
-      if (isOnProfile) return true;
-
-      if (!isOnDashboard)
+      if (isOnDashboard) {
+        if (isLoggedIn) return true;
+        return false; // Redirect unauthenticated users to login page
+      } else if (isOnProfile) {
+        if (isLoggedIn) return true;
+        return false;
+      } else if (isLoggedIn) {
         return Response.redirect(new URL("/dashboard", nextUrl));
-
+      }
       return true;
     },
   },
