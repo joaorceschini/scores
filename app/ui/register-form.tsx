@@ -110,7 +110,7 @@ export default function RegisterForm() {
           )}
         </div>
         <Link
-          href="/register"
+          href="/login"
           className="text-center transition-colors text-gray-400 hover:text-white"
         >
           login
