@@ -10,8 +10,10 @@ export const authConfig = {
       const isOnDashboard = nextUrl.pathname.startsWith("/dashboard");
       const isOnProfile = nextUrl.pathname.startsWith("/profile");
       const isImage = nextUrl.pathname.endsWith(".jpg");
+      const isFavicon = nextUrl.pathname.endsWith(".ico");
 
       if (isImage) return true;
+      if (isFavicon) return true;
 
       if (isOnDashboard) {
         if (isLoggedIn) return true;
