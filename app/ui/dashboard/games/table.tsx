@@ -70,7 +70,7 @@ export default async function GamesTable({
                       <Link
                         href={game.url}
                         target="_blank"
-                        className="block w-full px-4 py-3 text-gray-400"
+                        className="block w-full px-4 py-3 transition-colors text-gray-400 hover:text-white"
                       >
                         url
                       </Link>
