@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { PlusIcon, LinkIcon } from "@heroicons/react/24/outline";
+import { AtSymbolIcon, PlusIcon, LinkIcon } from "@heroicons/react/24/outline";
 import { useActionState } from "react";
 import { Button } from "../button";
 import { StateUserUpdate, updateUser } from "../../lib/actions";
@@ -51,7 +51,7 @@ export default function Form({ user }: { user: QueryResultRow }) {
           className="peer block w-full outline-1 rounded-md border border-gray-300 py-[9px] pl-10 text-sm placeholder:text-gray-500 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit"
           aria-describedby="email-error"
         />
-        <LinkIcon className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-100" />
+        <AtSymbolIcon className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-100" />
       </div>
       <div id="email-error" aria-live="polite" aria-atomic="true">
         {state.errors?.email &&
