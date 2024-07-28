@@ -2,6 +2,11 @@ import { fetchUserByEmail } from "../../lib/data";
 import { auth } from "@/auth";
 import Header from "../../ui/dashboard/header";
 import Form from "../../ui/profile/newpassword-form";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "change password",
+};
 
 export default async function Page() {
   const session = await auth();

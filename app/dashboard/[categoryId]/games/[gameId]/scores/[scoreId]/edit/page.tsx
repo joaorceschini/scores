@@ -5,6 +5,11 @@ import {
 } from "@/app/lib/data";
 import Breadcrumbs from "../../../../../../../ui/dashboard/breadcrumbs";
 import Form from "../../../../../../../ui/dashboard/games/scores/edit-form";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "edit",
+};
 
 export default async function Page({
   params,

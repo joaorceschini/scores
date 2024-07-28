@@ -5,6 +5,11 @@ import Table from "../../../ui/dashboard/games/table";
 import Pagination from "../../../ui/dashboard/pagination";
 import Breadcrumbs from "../../../ui/dashboard/breadcrumbs";
 import { CreateGame } from "@/app/ui/dashboard/games/buttons";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "games",
+};
 
 export default async function Page({
   searchParams,

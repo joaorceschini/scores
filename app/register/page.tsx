@@ -1,5 +1,10 @@
 import RegisterForm from "@/app/ui/register-form";
 import Image from "next/image";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "register",
+};
 
 export default function RegisterPage() {
   return (

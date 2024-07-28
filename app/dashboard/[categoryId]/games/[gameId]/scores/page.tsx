@@ -10,6 +10,11 @@ import Table from "../../../../../ui/dashboard/games/scores/table";
 import Pagination from "../../../../../ui/dashboard/pagination";
 import Breadcrumbs from "../../../../../ui/dashboard/breadcrumbs";
 import { CreateScore } from "../../../../../ui/dashboard/games/scores/buttons";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "scores",
+};
 
 export default async function Page({
   searchParams,

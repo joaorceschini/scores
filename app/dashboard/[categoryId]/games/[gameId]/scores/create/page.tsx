@@ -1,6 +1,11 @@
 import { fetchCategoryById, fetchGameById } from "../../../../../../lib/data";
 import Breadcrumbs from "../../../../../../ui/dashboard/breadcrumbs";
 import Form from "../../../../../../ui/dashboard/games/scores/create-form";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "create",
+};
 
 export default async function Page({
   params,

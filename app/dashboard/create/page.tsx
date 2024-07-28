@@ -1,5 +1,10 @@
 import Breadcrumbs from "../../ui/dashboard/breadcrumbs";
 import Form from "../../ui/dashboard/create-form";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "create",
+};
 
 export default async function Page() {
   return (

@@ -4,8 +4,11 @@ import { fetchCategoriesPages } from "../lib/data";
 import { Suspense } from "react";
 import Table from "../ui/dashboard/table";
 import Pagination from "../ui/dashboard/pagination";
-import { auth } from "@/auth";
-import Image from "next/image";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "dashboard",
+};
 
 export default async function Page({
   searchParams,
