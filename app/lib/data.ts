@@ -2,24 +2,24 @@ import { sql } from "@vercel/postgres";
 import { CategoriesTable, GamesTable, ScoresTable } from "./definitions";
 import { auth } from "@/auth";
 
-export async function fetchCategories(userId: string) {
+export async function fetchScoresByGameId(gameId: string) {
   const session = await auth();
   const user = await fetchUserId(session?.user?.email || "");
 
   try {
-    const categories = await sql<CategoriesTable>`
-      SELECT categories.id, categories.name, categories.date 
-      FROM categories
+    const scores = await sql`
+      SELECT scores.id, scores.score, scores.description, scores.date 
+      FROM scores
       WHERE
-        categories.user_id = ${user.id}        
-      ORDER BY categories.date DESC
-      LIMIT 5
+        scores.game_id = ${gameId} AND
+        scores.user_id = ${user.id}
+      ORDER BY scores.date DESC
     `;
 
-    return categories.rows;
+    return scores.rows;
   } catch (error) {
     console.error("database error:", error);
-    throw new Error("failed to fetch categories");
+    throw new Error("failed to fetch scores");
   }
 }
 
