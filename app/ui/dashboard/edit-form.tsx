@@ -51,7 +51,7 @@ export default function Form({ category }: { category: QueryResultRow }) {
       <div className="mt-6 flex justify-end gap-2">
         <Link
           href="/dashboard"
-          className="flex h-10 items-center rounded-md border border-neutral-800 px-4 text-sm font-medium text-gray-500 transition-colors hover:bg-neutral-900"
+          className="flex h-10 items-center rounded-md bg-neutral-900 px-4 text-sm font-medium text-gray-500 transition-colors hover:opacity-95"
         >
           cancel
         </Link>

@@ -6,10 +6,10 @@ export function CreateGame({ categoryId }: { categoryId: string }) {
   return (
     <Link
       href={`/dashboard/${categoryId}/games/create`}
-      className="flex h-10 items-center rounded-md bg-gray-400 px-4 text-sm font-medium text-black transition-colors hover:bg-gray-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-600"
+      className="flex h-10 items-center rounded-md border border-neutral-800 text-gray-300 px-4 text-sm font-medium transition-colors hover:bg-neutral-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-600"
     >
       <span className="hidden md:block">create game</span>{" "}
-      <PlusIcon className="h-5 md:ml-4" />
+      <PlusIcon className="h-5 md:ml-4 text-white" />
     </Link>
   );
 }
