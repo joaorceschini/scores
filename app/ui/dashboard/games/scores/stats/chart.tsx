@@ -39,7 +39,7 @@ export default async function ScoresChart({ scores }: { scores: any }) {
       title: {
         display: true,
         text: `total scores: ${scores.length}`,
-        align: "end",
+        align: "end" as const,
       },
     },
     stacked: false,
