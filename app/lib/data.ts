@@ -13,7 +13,7 @@ export async function fetchScoresByGameId(gameId: string) {
       WHERE
         scores.game_id = ${gameId} AND
         scores.user_id = ${user.id}
-      ORDER BY scores.date DESC
+      ORDER BY scores.date ASC
     `;
 
     return scores.rows;

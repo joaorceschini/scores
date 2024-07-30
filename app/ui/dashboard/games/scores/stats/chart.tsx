@@ -1,6 +1,6 @@
 "use client";
+
 import { formatDateToLocal } from "../../../../../lib/utils";
-import { fetchScoresByGameId } from "@/app/lib/data";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,7 +11,6 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 
 // Register ChartJS components using ChartJS.register
@@ -25,19 +24,9 @@ ChartJS.register(
   Legend,
 );
 
-interface LineProps {
-  id: string;
-}
-
 export default async function ScoresChart({ scores }: { scores: any }) {
-  console.log(scores);
-
   if (!scores) {
-    return (
-      <div className="flex items-center justify-center h-screen">
-        <div className="animate-spin rounded-full border-4 border-solid border-current border-r-transparent h-12 w-12"></div>
-      </div>
-    );
+    return <h1>this category does not exists</h1>;
   }
 
   const options = {
@@ -46,8 +35,14 @@ export default async function ScoresChart({ scores }: { scores: any }) {
       mode: "index" as const,
       intersect: false,
     },
+    plugins: {
+      title: {
+        display: true,
+        text: `total scores: ${scores.length}`,
+        align: "end",
+      },
+    },
     stacked: false,
-
     scales: {
       x: {
         grid: {

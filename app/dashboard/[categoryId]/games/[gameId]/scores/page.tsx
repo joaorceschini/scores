@@ -2,6 +2,7 @@ import Search from "../../../../../ui/search";
 import {
   fetchCategoryById,
   fetchGameById,
+  fetchScoresByGameId,
   fetchScoresPages,
 } from "../../../../../lib/data";
 import { Suspense } from "react";
@@ -36,6 +37,7 @@ export default async function Page({
 
   const category = await fetchCategoryById(categoryId);
   const game = await fetchGameById(gameId, categoryId);
+  const scores = await fetchScoresByGameId(gameId);
   const totalPages = await fetchScoresPages(query, gameId);
 
   if (!category) {
@@ -78,22 +80,26 @@ export default async function Page({
       <div className="my-5 flex w-full justify-center">
         <Pagination totalPages={totalPages} />
       </div>
-      <div className="flex items-center justify-between">
-        <Link
-          href={`/dashboard/${categoryId}/games/${gameId}/scores/stats`}
-          className="w-full flex h-10 items-center justify-between gap-2 mr-2 rounded-md border border-neutral-800 text-gray-300 px-4 text-sm font-medium transition-colors hover:bg-neutral-950"
-        >
-          <ChartBarIcon className="h-5 text-white" />
-          <span className="hidden md:block">stats</span>{" "}
-        </Link>
-        <Image
-          src="/scores-sword.jpg"
-          alt="sword"
-          className="dark:invert rotate-90"
-          height={50}
-          width={50}
-        />
-      </div>
+      {!scores.length ? (
+        <></>
+      ) : (
+        <div className="flex items-center justify-between">
+          <Link
+            href={`/dashboard/${categoryId}/games/${gameId}/scores/stats`}
+            className="w-full flex h-10 items-center justify-between gap-2 mr-2 rounded-md border border-neutral-800 text-gray-300 px-4 text-sm font-medium transition-colors hover:bg-neutral-950"
+          >
+            <ChartBarIcon className="h-5 text-white" />
+            <span className="hidden md:block">stats</span>{" "}
+          </Link>
+          <Image
+            src="/scores-sword.jpg"
+            alt="sword"
+            className="dark:invert rotate-90"
+            height={50}
+            width={50}
+          />
+        </div>
+      )}
     </main>
   );
 }
