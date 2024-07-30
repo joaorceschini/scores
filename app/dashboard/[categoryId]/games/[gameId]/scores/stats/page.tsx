@@ -48,7 +48,7 @@ export default async function Page({
           },
         ]}
       />
-      <ScoresChart scores={scores} />
+      <ScoresChart scores={scores} highscore={game.highscore} />
     </main>
   );
 }

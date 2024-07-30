@@ -24,7 +24,13 @@ ChartJS.register(
   Legend,
 );
 
-export default async function ScoresChart({ scores }: { scores: any }) {
+export default async function ScoresChart({
+  scores,
+  highscore,
+}: {
+  scores: any;
+  highscore: number;
+}) {
   if (!scores) {
     return <h1>this category does not exists</h1>;
   }
@@ -38,7 +44,7 @@ export default async function ScoresChart({ scores }: { scores: any }) {
     plugins: {
       title: {
         display: true,
-        text: `total scores: ${scores.length}`,
+        text: `highscore: ${highscore} / total scores: ${scores.length}`,
         align: "end" as const,
       },
     },
