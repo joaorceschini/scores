@@ -8,7 +8,7 @@ export async function fetchScoresByGameId(gameId: string) {
 
   try {
     const scores = await sql`
-      SELECT scores.id, scores.score, scores.description, scores.date 
+      SELECT scores.id, scores.score, scores.description, scores.date AT TIME ZONE 'UTC' AS date
       FROM scores
       WHERE
         scores.game_id = ${gameId} AND

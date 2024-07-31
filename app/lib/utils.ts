@@ -8,7 +8,7 @@ export const formatDateToLocal = (
     month: "numeric",
     year: "numeric",
   };
-  const formatter = new Intl.DateTimeFormat("en-US", options);
+  const formatter = new Intl.DateTimeFormat(locale, options);
   return formatter.format(date);
 };
 
