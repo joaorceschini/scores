@@ -21,8 +21,6 @@ export default async function scoresTable({
     gameId,
   );
 
-  console.log("scores/table: ", scores[0].date);
-
   return (
     <div className="mt-6 flow-root">
       <div className="inline-block min-w-full align-middle">

@@ -35,12 +35,6 @@ export default function ScoresChart({
     return <h1>this category does not exists</h1>;
   }
 
-  console.log("stats/chart: ", scores[0].date);
-  console.log(
-    "stats/chart formatDateToLocal: ",
-    formatDateToLocal(scores[0].date),
-  );
-
   const options = {
     responsive: true,
     interaction: {
