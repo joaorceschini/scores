@@ -41,6 +41,12 @@ export default function ScoresChart({
     formatDateToLocal(scores[0].date),
   );
 
+  const isEmpty = (str: any) => !str || 0 === str.length;
+  const convertSqlDateTimeUtc = (serverDate: any) =>
+    isEmpty(serverDate) ? serverDate : new Date(serverDate).toLocaleString();
+
+  console.log("convertsqldatetimeutc: ", convertSqlDateTimeUtc(scores[0].date));
+
   const options = {
     responsive: true,
     interaction: {
