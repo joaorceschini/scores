@@ -32,6 +32,8 @@ export default async function Page({
     return <h1>this game does not exists</h1>;
   }
 
+  console.log("stats/page: ", scores[0].date);
+
   return (
     <main className="w-full py-4">
       <Breadcrumbs
