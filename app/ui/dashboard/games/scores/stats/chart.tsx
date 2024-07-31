@@ -24,7 +24,7 @@ ChartJS.register(
   Legend,
 );
 
-export default async function ScoresChart({
+export default function ScoresChart({
   scores,
   highscore,
 }: {
@@ -34,6 +34,8 @@ export default async function ScoresChart({
   if (!scores) {
     return <h1>this category does not exists</h1>;
   }
+
+  console.log(scores[0].date);
 
   const options = {
     responsive: true,
