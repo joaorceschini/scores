@@ -35,14 +35,15 @@ export default function ScoresChart({
     return <h1>this category does not exists</h1>;
   }
 
-  function getScoresAverage(array: any) {
+  function getAverage(array: any) {
     let sum = 0;
     for (let i = 0; i < array.length; i++) {
-      sum += Number(array[i].score);
-      console.log(sum);
+      sum += array[i];
     }
-    return Math.round(sum / array.length);
+    return sum / array.length;
   }
+
+  console.log(getAverage(scores));
 
   const options = {
     responsive: true,
@@ -53,7 +54,7 @@ export default function ScoresChart({
     plugins: {
       title: {
         display: true,
-        text: `highscore: ${highscore} / average: ${getScoresAverage(scores)} / total scores: ${scores.length}`,
+        text: `highscore: ${highscore} / total scores: ${scores.length}`,
         align: "end" as const,
       },
     },
