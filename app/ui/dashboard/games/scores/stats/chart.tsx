@@ -41,12 +41,6 @@ export default function ScoresChart({
     formatDateToLocal(scores[0].date),
   );
 
-  const isEmpty = (str: any) => !str || 0 === str.length;
-  const convertSqlDateTimeUtc = (serverDate: any) =>
-    isEmpty(serverDate) ? serverDate : new Date(serverDate).toLocaleString();
-
-  console.log("convertsqldatetimeutc: ", convertSqlDateTimeUtc(scores[0].date));
-
   const options = {
     responsive: true,
     interaction: {
@@ -81,7 +75,9 @@ export default function ScoresChart({
   };
 
   const data = {
-    labels: scores?.map((score: any) => formatDateToLocal(score.date)),
+    labels: scores?.map((score: any) =>
+      formatDateToLocal(score.date.setHours(score.date.getHours() + 3)),
+    ),
     datasets: [
       {
         label: "scores",
