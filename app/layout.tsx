@@ -8,6 +8,7 @@ export const metadata: Metadata = {
     default: "sigscores",
   },
   description: "app to save scores",
+  metadataBase: new URL("https://sigscores.vercel.app/"),
 };
 
 export default function RootLayout({
