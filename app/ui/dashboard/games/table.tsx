@@ -38,7 +38,7 @@ export default async function GamesTable({
                 </th>
               </tr>
             </thead>
-            <tbody className="text-white font-mono">
+            <tbody className="text-white">
               {games?.map((game) => (
                 <tr
                   key={game.id}

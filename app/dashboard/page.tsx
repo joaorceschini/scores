@@ -26,7 +26,7 @@ export default async function Page({
   return (
     <main className="w-full py-4">
       <div className="flex w-full items-center">
-        <h1 className="text-2xl font-mono">categories</h1>
+        <h1 className="text-2xl">categories</h1>
       </div>
       <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
         <Search placeholder="search categories..." />

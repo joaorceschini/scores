@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { inter } from "../app/ui/fonts";
+import { ibmplexmono } from "../app/ui/fonts";
 
 export const metadata: Metadata = {
   title: {
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   },
   description: "app to save scores",
   metadataBase: new URL("https://sigscores.vercel.app/"),
+  keywords: ["scores", "score", "save", "save score", "table", "stats"],
 };
 
 export default function RootLayout({
@@ -18,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${ibmplexmono.className} antialiased`}>{children}</body>
     </html>
   );
 }

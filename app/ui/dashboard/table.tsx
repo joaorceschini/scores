@@ -30,7 +30,7 @@ export default async function CategoriesTable({
                 </th>
               </tr>
             </thead>
-            <tbody className="text-white font-mono">
+            <tbody className="text-white">
               {categories?.map((category) => (
                 <tr
                   key={category.id}

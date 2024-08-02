@@ -42,7 +42,7 @@ export default async function scoresTable({
                 </th>
               </tr>
             </thead>
-            <tbody className="text-white font-mono">
+            <tbody className="text-white">
               {scores?.map((score) => (
                 <tr
                   key={score.id}

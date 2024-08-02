@@ -18,7 +18,7 @@ export default async function Page() {
       <div className="flex w-full max-w-5xl items-center md:overflow-y-auto md:mt-16 md:px-4">
         <main className="w-full py-4">
           <div className="flex w-full items-center">
-            <h1 className="text-2xl font-mono">profile</h1>
+            <h1 className="text-2xl">profile</h1>
           </div>
           <div className="mt-4">
             <Form user={user} />
