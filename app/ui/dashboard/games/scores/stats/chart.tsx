@@ -39,7 +39,6 @@ export default function ScoresChart({
     let sum = 0;
     for (let i = 0; i < array.length; i++) {
       sum += Number(array[i].score);
-      console.log(sum);
     }
     return Math.round(sum / array.length);
   }
