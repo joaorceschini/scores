@@ -5,7 +5,6 @@ import {
 } from "../../../../../../lib/data";
 import Breadcrumbs from "../../../../../../ui/dashboard/breadcrumbs";
 import { Metadata } from "next";
-import Image from "next/image";
 import ScoresChart from "@/app/ui/dashboard/games/scores/stats/chart";
 
 export const metadata: Metadata = {
@@ -48,7 +47,7 @@ export default async function Page({
           },
         ]}
       />
-      <ScoresChart scores={scores} highscore={game.highscore} />
+      <ScoresChart scores={scores} />
     </main>
   );
 }

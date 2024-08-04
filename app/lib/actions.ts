@@ -353,29 +353,6 @@ export async function createScore(
   const { score, description } = validatedFields.data;
   const date = new Date().toISOString().split("T")[0];
 
-  const game = await fetchGameById(gameId, categoryId);
-
-  if (
-    game.highscore == undefined ||
-    game.highscore == null ||
-    score > game.highscore
-  ) {
-    try {
-      await sql`
-        UPDATE games
-        SET highscore = ${score} 
-        WHERE 
-          id = ${gameId} AND
-          games.category_id = ${categoryId}
-
-    `;
-    } catch (error) {
-      return {
-        message: "database error: failed to update highscore",
-      };
-    }
-  }
-
   try {
     await sql`
       INSERT INTO scores (user_id, game_id, score, description, date)
@@ -414,25 +391,6 @@ export async function updateScore(
 
   const { score, description } = validatedFields.data;
 
-  const game = await fetchGameById(gameId, categoryId);
-
-  if (game.highscore == null || score > game.highscore) {
-    try {
-      await sql`
-        UPDATE games
-        SET highscore = ${score} 
-        WHERE 
-          id = ${gameId} AND
-          games.category_id = ${categoryId}
-
-    `;
-    } catch (error) {
-      return {
-        message: "database error: failed to update highscore",
-      };
-    }
-  }
-
   try {
     await sql`
       UPDATE scores
@@ -456,28 +414,6 @@ export async function deleteScore(
   categoryId: string,
   gameId: string,
 ) {
-  const game = await fetchGameById(gameId, categoryId);
-  const score = await fetchScoreById(id, gameId);
-
-  if (score.score >= game.highscore) {
-    const maxscore = await fetchMaxScoreById(id, gameId);
-
-    try {
-      await sql`
-        UPDATE games
-        SET highscore = ${maxscore.max} 
-        WHERE 
-          id = ${gameId} AND
-          games.category_id = ${categoryId}
-
-    `;
-    } catch (error) {
-      return {
-        message: "database error: failed to update highscore",
-      };
-    }
-  }
-
   try {
     await sql`
       DELETE FROM scores WHERE id = ${id}

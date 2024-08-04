@@ -63,7 +63,6 @@ async function seedGames() {
       user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE, 
       category_id UUID NOT NULL REFERENCES categories(id) ON DELETE CASCADE,
       name TEXT NOT NULL, 
-      highscore BIGINT,
       url VARCHAR(255),
       date DATE NOT NULL
     );
@@ -72,8 +71,8 @@ async function seedGames() {
   const insertedGames = await Promise.all(
     games.map(
       (game) => client.sql`
-        INSERT INTO games (id, user_id, category_id, name, highscore, url, date)
-        VALUES (${game.id}, ${game.user_id}, ${game.category_id}, ${game.name}, ${game.highscore}, ${game.url}, ${game.date})
+        INSERT INTO games (id, user_id, category_id, name, url, date)
+        VALUES (${game.id}, ${game.user_id}, ${game.category_id}, ${game.name}, ${game.url}, ${game.date})
         ON CONFLICT (id) DO NOTHING;
       `,
     ),

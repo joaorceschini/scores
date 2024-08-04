@@ -24,13 +24,7 @@ ChartJS.register(
   Legend,
 );
 
-export default function ScoresChart({
-  scores,
-  highscore,
-}: {
-  scores: any;
-  highscore: number;
-}) {
+export default function ScoresChart({ scores }: { scores: any }) {
   if (!scores) {
     return <h1>this category does not exists</h1>;
   }
@@ -42,6 +36,8 @@ export default function ScoresChart({
     }
     return Math.round(sum / array.length);
   }
+
+  const highscore = Math.max(...scores.map((s: any) => Number(s.score)));
 
   const options = {
     responsive: true,

@@ -179,7 +179,6 @@ export async function fetchFilteredGames(
       SELECT 
         games.id,
         games.name,
-        games.highscore,
         games.url,
         games.date
       FROM games
@@ -253,7 +252,6 @@ export async function fetchGameById(gameId: string, categoryId: string) {
       SELECT 
         games.id,
         games.name,
-        games.highscore,
         games.url
       FROM games
       WHERE 
