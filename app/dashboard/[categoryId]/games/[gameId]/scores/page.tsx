@@ -94,7 +94,7 @@ export default async function Page({
           <Image
             src="/scores-sword.jpg"
             alt="sword"
-            className="dark:invert rotate-90"
+            className="invert rotate-90"
             height={50}
             width={50}
           />

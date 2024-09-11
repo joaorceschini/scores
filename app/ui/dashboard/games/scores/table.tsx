@@ -46,7 +46,7 @@ export default async function scoresTable({
               {scores?.map((score) => (
                 <tr
                   key={score.id}
-                  className="w-full dark:border-neutral-800 text-sm border-b border-neutral-800 last-of-type:border-none hover:bg-neutral-950"
+                  className="w-full text-sm border-b border-neutral-800 last-of-type:border-none hover:bg-neutral-950"
                 >
                   <td className="whitespace-nowrap px-4 py-3">{score.score}</td>
                   <td className="whitespace-nowrap w-full px-4 py-3">

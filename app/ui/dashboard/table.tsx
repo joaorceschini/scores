@@ -34,7 +34,7 @@ export default async function CategoriesTable({
               {categories?.map((category) => (
                 <tr
                   key={category.id}
-                  className="w-full dark:border-neutral-800 text-sm border-b border-neutral-800 last-of-type:border-none hover:bg-neutral-950"
+                  className="w-full text-sm border-b border-neutral-800 last-of-type:border-none hover:bg-neutral-950"
                 >
                   <td className="whitespace-nowrap">
                     <Link
